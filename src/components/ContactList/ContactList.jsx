@@ -4,10 +4,10 @@ import { useMemo } from 'react';
 import { getContacts, getFilter } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 
-export const ContactList = () => {
-  const contacts = useSelector(getContacts);
+const ContactList = () => {
+  const contactsState = useSelector(getContacts);
   const filter = useSelector(getFilter);
-
+  const contacts = contactsState.contacts;
   const visibleContact = useMemo(() => {
     const normalizeFilter = filter.toLowerCase();
     const visibleContact = contacts.filter(contact =>
@@ -24,3 +24,5 @@ export const ContactList = () => {
     </ul>
   );
 };
+
+export default ContactList;

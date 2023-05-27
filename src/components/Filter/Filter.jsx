@@ -2,7 +2,7 @@ import { filterChange } from 'redux/filterSlice';
 import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 
-export const Filter = () => {
+const Filter = () => {
   const dispatch = useDispatch();
 
   return (
@@ -16,3 +16,4 @@ export const Filter = () => {
     </label>
   );
 };
+export default Filter;

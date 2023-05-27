@@ -1,26 +1,10 @@
 import { nanoid } from 'nanoid';
-import css from './ContactForm.module.css';
-import { useDispatch } from 'react-redux';
-import { addNewContact } from 'redux/contactsSlice';
+import PropTypes from 'prop-types';
+import css from './FormMarcup.module.css';
 
-export const ContactForm = () => {
-  const dispatch = useDispatch();
-
+const FormMarcup = ({ submitContact }) => {
   const inputNameId = nanoid();
   const inputNumberId = nanoid();
-
-  const submitContact = e => {
-    e.preventDefault();
-    const form = e.target;
-    const contact = {
-      id: nanoid(),
-      name: form.elements.name.value,
-      number: form.elements.number.value,
-    };
-    dispatch(addNewContact(contact));
-    form.reset();
-  };
-
   return (
     <form className={css.form} onSubmit={submitContact} autoComplete="off">
       <label htmlFor={inputNameId} className={css.label}>
@@ -52,4 +36,10 @@ export const ContactForm = () => {
       </button>
     </form>
   );
+};
+
+export default FormMarcup;
+
+FormMarcup.propTypes = {
+  submitContact: PropTypes.func.isRequired,
 };
