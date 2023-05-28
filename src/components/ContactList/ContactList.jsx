@@ -5,9 +5,9 @@ import { getContacts, getFilter } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 
 const ContactList = () => {
-  const contactsState = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  const contacts = contactsState.contacts;
+
   const visibleContact = useMemo(() => {
     const normalizeFilter = filter.toLowerCase();
     const visibleContact = contacts.filter(contact =>
